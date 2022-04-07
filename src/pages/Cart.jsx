@@ -159,6 +159,7 @@ const Button = styled.button`
     background-color: black;
     color: white;
     font-weight: 600;
+    cursor: pointer;
 `;
 
 const Cart = () => {

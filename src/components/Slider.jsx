@@ -30,6 +30,11 @@ const Arrow = styled.div`
     cursor: pointer;
     opacity: 0.5;
     z-index: 2; 
+    transition: all 0.5s ease;
+    &:hover{
+        background-color: #e9f5f5;
+        transform: scale(1.5);
+    }
 `;
 
 const Wrapper = styled.div`
@@ -58,7 +63,7 @@ const Image = styled.img`
 
 const InfoContainer = styled.div`
     flex: 1;
-    padding: 50%;
+    padding: 50px;
 `;
 
 const Title = styled.h1`
@@ -77,6 +82,11 @@ const Button = styled.button`
     font-size: 20px;
     background-color: transparent;
     cursor: pointer;
+    transition: all 0.5s ease;
+    &:hover{
+        background-color: #e9f5f5;
+        transform: scale(1.1);
+    }
 `;
 
 const Slider = () => {
@@ -103,7 +113,7 @@ const Slider = () => {
                     <InfoContainer>
                         <Title>{item.title}</Title>
                         <Desc>{item.desc}</Desc>
-                        <Button>Blame</Button>
+                        <Button>SHOP NOW</Button>
                     </InfoContainer>
                 </Slide>
             ))}

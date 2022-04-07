@@ -69,7 +69,7 @@ const Register = () => {
                 <Input placeholder="Password"/>
                 <Input placeholder="Confirm password"/>
                 <Agreement>
-                    By creating an account, I consent to the processing of my personal data in accordance with the <b>PRIVACY POLICY</b>
+                    By creating an account, I consent to the processing of my personal data in accordance with the  <u>PRIVACY POLICY</u>
                 </Agreement>
                 <Button>Create</Button>
             </Form>
