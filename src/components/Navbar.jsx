@@ -38,6 +38,18 @@ const HomeButton = styled.span`
 	${mobile({ display: "none" })}
 `;
 
+const CartIcon = styled.span`
+	font-size: 14px;
+	cursor: pointer;
+	color: teal;
+`;
+
+const LogoutIcon = styled.span`
+	font-size: 14px;
+	cursor: pointer;
+	color: teal;
+`;
+
 const SearchContainer = styled.div`
 	border: 0.5px solid lightgray;
 	display: flex;
@@ -116,17 +128,21 @@ const Navbar = () => {
 				</Center>
 				<Right>
 					<Link to="/cart">
-						<Badge
-							badgeContent={quantity}
-							color="primary"
-							overlap="rectangular"
-						>
-							<ShoppingCartOutlined />
-						</Badge>
+						<CartIcon>
+							<Badge
+								badgeContent={quantity}
+								color="primary"
+								overlap="rectangular"
+							>
+								<ShoppingCartOutlined />
+							</Badge>
+						</CartIcon>
 					</Link>
-					<Badge onClick={handleLogout} color="primary" overlap="rectangular">
-						<ExitToApp />
-					</Badge>
+					<LogoutIcon>
+						<Badge onClick={handleLogout} color="primary" overlap="rectangular">
+							<ExitToApp />
+						</Badge>
+					</LogoutIcon>
 				</Right>
 			</Wrapper>
 		</Container>
