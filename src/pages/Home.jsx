@@ -9,7 +9,7 @@ import Footer from "../components/Footer";
 import Login from "./Login";
 
 const Home = () => {
-	return localStorage.getItem("user") ? (
+	return (
 		<div>
 			<Announcement />
 			<Navbar />
@@ -19,9 +19,20 @@ const Home = () => {
 			<NewsLetter />
 			<Footer />
 		</div>
-	) : (
-		<Login />
 	);
+	// return localStorage.getItem("user") ? (
+	// 	<div>
+	// 		<Announcement />
+	// 		<Navbar />
+	// 		<Slider />
+	// 		<Products />
+	// 		<Categories />
+	// 		<NewsLetter />
+	// 		<Footer />
+	// 	</div>
+	// ) : (
+	// 	<Login />
+	// );
 };
 
 export default Home;

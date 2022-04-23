@@ -3,9 +3,6 @@ import { useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import { userRequest } from "../requestMethods";
 import React from "react";
-import { stripeData } from "../data";
-import { clearProducts } from "../redux/cartRedux";
-import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 const Success = () => {

@@ -9,6 +9,7 @@ import styled from "styled-components";
 import { publicRequest } from "../requestMethods";
 import { useDispatch } from "react-redux";
 import { addProduct, clearProducts } from "../redux/cartRedux";
+import { useHistory } from "react-router-dom";
 
 const Info = styled.div`
 	opacity: 0;
@@ -78,6 +79,7 @@ const Product = ({ item }) => {
 	const quantity = 1;
 	const color = item.color;
 	const size = item.size[1];
+	const history = useHistory();
 
 	useEffect(() => {
 		const getProduct = async () => {
@@ -90,7 +92,11 @@ const Product = ({ item }) => {
 	}, [item.id]);
 
 	const handleClick = () => {
-		dispatch(addProduct({ ...product, quantity, color, size }));
+		if (localStorage.getItem("user") != undefined) {
+			dispatch(addProduct({ ...product, quantity, color, size }));
+		} else {
+			history.push("/login");
+		}
 	};
 
 	return (
