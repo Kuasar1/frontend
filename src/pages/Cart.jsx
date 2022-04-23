@@ -198,11 +198,11 @@ const Cart = () => {
 					},
 					config
 				);
-				history.push("/success", {
+
+				history.push("/order", {
 					stripeData: res.data,
 					products: cart,
 				});
-				dispatch(clearProducts());
 			} catch (err) {}
 		};
 		stripeToken && cart.total >= 1 && makeRequest();
@@ -228,7 +228,7 @@ const Cart = () => {
 				</Top>
 				<Bottom>
 					<Info>
-						{cart.products.map((product) => (
+						{cart.products?.map((product) => (
 							<Product key={product.id}>
 								<ProductDetail>
 									<Image src={product.image} />
@@ -257,7 +257,6 @@ const Cart = () => {
 								</PriceDetail>
 							</Product>
 						))}
-						;
 						<Hr />
 					</Info>
 					<Summary>

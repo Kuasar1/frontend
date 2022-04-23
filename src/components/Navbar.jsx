@@ -1,15 +1,13 @@
 import { Badge } from "@material-ui/core";
 import {
-	AccountCircle,
 	ExitToApp,
-	Home,
 	HomeOutlined,
 	Search,
 	ShoppingCartOutlined,
 } from "@material-ui/icons";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { getProduct } from "../redux/apiCalls";
@@ -72,13 +70,6 @@ const Right = styled.div`
 	${mobile({ flex: 2, justifyContent: "center" })}
 `;
 
-const MenuItem = styled.div`
-	font-size: 14px;
-	cursor: pointer;
-	margin-left: 25px;
-	${mobile({ fontSize: "12px", marginLeft: "10px" })}
-`;
-
 const Navbar = () => {
 	const quantity = useSelector((state) => state.cart.quantity);
 	const history = useHistory();
@@ -124,11 +115,6 @@ const Navbar = () => {
 					<Logo>EZbuy</Logo>
 				</Center>
 				<Right>
-					<Link to="/profile">
-						<Badge overlap="rectangular">
-							<AccountCircle />
-						</Badge>
-					</Link>
 					<Link to="/cart">
 						<Badge
 							badgeContent={quantity}

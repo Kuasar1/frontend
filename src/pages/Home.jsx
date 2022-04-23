@@ -20,19 +20,6 @@ const Home = () => {
 			<Footer />
 		</div>
 	);
-	// return localStorage.getItem("user") ? (
-	// 	<div>
-	// 		<Announcement />
-	// 		<Navbar />
-	// 		<Slider />
-	// 		<Products />
-	// 		<Categories />
-	// 		<NewsLetter />
-	// 		<Footer />
-	// 	</div>
-	// ) : (
-	// 	<Login />
-	// );
 };
 
 export default Home;
