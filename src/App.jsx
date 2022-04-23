@@ -39,10 +39,10 @@ const App = () => {
 					<Profile />
 				</Route>
 				<Route path="/login">
-					{user != undefined ? <Redirect to="/" /> : <Login />}
+					{user != undefined || user != null ? <Redirect to="/" /> : <Login />}
 				</Route>
 				<Route path="/register">
-					{user != null ? <Redirect to="/" /> : <Register />}
+					<Register />
 				</Route>
 			</Switch>
 		</Router>

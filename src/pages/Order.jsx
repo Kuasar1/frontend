@@ -10,6 +10,8 @@ import { clearProducts } from "../redux/cartRedux";
 import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
+import Login from "./Login";
+import { stripeData } from "../data";
 
 const Container = styled.div``;
 
@@ -112,9 +114,15 @@ const SummaryItem = styled.div`
 	font-size: ${(props) => props.type === "total" && "24px"};
 `;
 
-const SummaryItemText = styled.span``;
+const SummaryItemText = styled.span`
+	display: flex;
+	flex: 1;
+`;
 
-const SummaryItemValue = styled.span``;
+const SummaryItemValue = styled.span`
+	display: flex;
+	flex: 2;
+`;
 
 const Button = styled.button`
 	width: 100%;
@@ -132,8 +140,8 @@ const Order = () => {
 	const cart = location.state.products;
 	const user = useSelector((state) => state.user.currentUser);
 	const history = useHistory();
-	const [orderId, setOrderId] = useState(null);
 	const dispatch = useDispatch();
+	const address = stripeData.billing_details.address;
 	const handleClick = () => {
 		history.push("/");
 	};
@@ -158,15 +166,13 @@ const Order = () => {
 					},
 					config
 				);
-				console.log(res);
-				setOrderId(res.data.id);
 				dispatch(clearProducts());
 			} catch {}
 		};
 		data && createOrder();
 	}, [cart, data, user]);
 
-	return (
+	return localStorage.getItem("user") ? (
 		<Container>
 			<Navbar />
 			<Announcement />
@@ -201,16 +207,18 @@ const Order = () => {
 					<Summary>
 						<SummaryTitle>ORDER SUMMARY</SummaryTitle>
 						<SummaryItem>
-							<SummaryItemText>Shipping:</SummaryItemText>
-							<SummaryItemValue>FREE</SummaryItemValue>
-						</SummaryItem>
-						<SummaryItem>
 							<SummaryItemText>Order status:</SummaryItemText>
 							<SummaryItemValue>PAID</SummaryItemValue>
 						</SummaryItem>
 						<SummaryItem>
+							<SummaryItemText>Shipping address:</SummaryItemText>
+							<SummaryItemValue>
+								{address.line1}, {address.city}, {address.country}
+							</SummaryItemValue>
+						</SummaryItem>
+						<SummaryItem>
 							<SummaryItemText>Arrival:</SummaryItemText>
-							<SummaryItemValue>5 working days</SummaryItemValue>
+							<SummaryItemValue>14 days</SummaryItemValue>
 						</SummaryItem>
 						<SummaryItem type="total">
 							<SummaryItemText>Order total</SummaryItemText>
@@ -222,6 +230,8 @@ const Order = () => {
 			</Wrapper>
 			<Footer />
 		</Container>
+	) : (
+		<Login />
 	);
 };
 

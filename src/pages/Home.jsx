@@ -6,7 +6,6 @@ import Slider from "../components/Slider";
 import Products from "../components/Products";
 import NewsLetter from "../components/NewsLetter";
 import Footer from "../components/Footer";
-import Login from "./Login";
 
 const Home = () => {
 	return (

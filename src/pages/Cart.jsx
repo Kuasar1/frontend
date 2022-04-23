@@ -166,7 +166,6 @@ const Button = styled.button`
 
 const Cart = () => {
 	const cart = useSelector((state) => state.cart);
-	const user = useSelector((state) => state.user.currentUser);
 	const [stripeToken, setStripeToken] = useState(null);
 	const history = useHistory();
 	const dispatch = useDispatch();
@@ -287,7 +286,9 @@ const Cart = () => {
 							token={onToken}
 							stripeKey={KEY}
 						>
-							<Button onClick={() => {}}>CHECKOUT NOW</Button>
+							<Button disabled={cart.total == 0} onClick={() => {}}>
+								CHECKOUT NOW
+							</Button>
 						</StripeCheckout>
 					</Summary>
 				</Bottom>

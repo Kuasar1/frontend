@@ -153,7 +153,10 @@ const Product = () => {
 	};
 
 	const handleClick = () => {
-		if (localStorage.getItem("user") != undefined) {
+		if (
+			localStorage.getItem("user") != undefined ||
+			localStorage.getItem("user") != null
+		) {
 			dispatch(addProduct({ ...product, quantity, color, size }));
 		} else {
 			history.push("/login");
