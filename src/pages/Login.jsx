@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import styled from "styled-components";
-import { login } from "../redux/apiCalls";
+import { login, register } from "../redux/apiCalls";
 import { mobile } from "../responsive";
 
 const Container = styled.div`
@@ -72,10 +74,15 @@ const Login = () => {
 	const [password, setPassword] = useState("");
 	const dispatch = useDispatch();
 	const { isFetching, error } = useSelector((state) => state.user);
+	const history = useHistory();
 
 	const handleClick = (e) => {
 		e.preventDefault();
 		login(dispatch, { username, password });
+	};
+
+	const handleRegister = () => {
+		history.push("/register");
 	};
 	return (
 		<Container>
@@ -95,7 +102,7 @@ const Login = () => {
 						LOGIN
 					</Button>
 					{error && <Error>Something went wrong...</Error>}
-					<Link to="/register">CREATE A NEW ACCOUNT</Link>
+					<Link onClick={handleRegister}>CREATE A NEW ACCOUNT</Link>
 				</Form>
 			</Wrapper>
 		</Container>

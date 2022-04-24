@@ -10,12 +10,11 @@ const userSlice = createSlice({
 	reducers: {
 		loginStart: (state) => {
 			state.isFetching = true;
-			state.error = false;
 		},
 		loginSuccess: (state, action) => {
 			state.isFetching = false;
 			state.currentUser = action.payload;
-			localStorage.setItem("user", action.payload);
+			localStorage.setItem("user", JSON.stringify(action.payload));
 			localStorage.setItem("ACCESS_TOKEN", state.currentUser.accessToken);
 		},
 		loginFailure: (state) => {
@@ -24,12 +23,11 @@ const userSlice = createSlice({
 		},
 		registerStart: (state) => {
 			state.isFetching = true;
-			state.error = false;
 		},
 		registerSuccess: (state, action) => {
 			state.isFetching = false;
 			state.currentUser = action.payload;
-			localStorage.setItem("user", action.payload);
+			localStorage.setItem("user", JSON.stringify(action.payload));
 			localStorage.setItem("ACCESS_TOKEN", state.currentUser.accessToken);
 		},
 		registerFailure: (state) => {

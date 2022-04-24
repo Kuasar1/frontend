@@ -69,7 +69,6 @@ const Register = () => {
 	const [confirm, setConfirm] = useState("");
 	const dispatch = useDispatch();
 	const { isFetching, error } = useSelector((state) => state.user);
-	const isError = false;
 
 	const handleClick = (e) => {
 		e.preventDefault();

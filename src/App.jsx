@@ -16,7 +16,6 @@ import {
 
 const App = () => {
 	const user = useSelector(() => localStorage.getItem("user"));
-
 	return (
 		<Router>
 			<Switch>
@@ -38,11 +37,9 @@ const App = () => {
 				<Route path="/order">
 					<Profile />
 				</Route>
-				<Route path="/login">
-					{user != undefined || user != null ? <Redirect to="/" /> : <Login />}
-				</Route>
+				<Route path="/login">{user ? <Redirect to="/" /> : <Login />}</Route>
 				<Route path="/register">
-					<Register />
+					{user ? <Redirect to="/" /> : <Register />}
 				</Route>
 			</Switch>
 		</Router>

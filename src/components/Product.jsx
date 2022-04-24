@@ -1,15 +1,17 @@
 import { Link } from "react-router-dom";
 import {
+	Favorite,
 	FavoriteBorderOutlined,
 	SearchOutlined,
 	ShoppingCartOutlined,
 } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { publicRequest } from "../requestMethods";
-import { useDispatch } from "react-redux";
+import { publicRequest, userRequest } from "../requestMethods";
+import { useDispatch, useSelector } from "react-redux";
 import { addProduct, clearProducts } from "../redux/cartRedux";
 import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Info = styled.div`
 	opacity: 0;
@@ -80,6 +82,7 @@ const Product = ({ item }) => {
 	const color = item.color;
 	const size = item.size[1];
 	const history = useHistory();
+	const [success, setSuccess] = useState(false);
 
 	useEffect(() => {
 		const getProduct = async () => {
@@ -102,18 +105,50 @@ const Product = ({ item }) => {
 		}
 	};
 
+	const handleRating = async () => {
+		if (
+			localStorage.getItem("user") != undefined ||
+			localStorage.getItem("user") != null
+		) {
+			setSuccess(true);
+			const config = {
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: localStorage.getItem("ACCESS_TOKEN"),
+				},
+			};
+			try {
+				const user = JSON.parse(localStorage.getItem("user"));
+				await userRequest.post(
+					"/products/rating",
+					{ userId: user.id, productId: product.id },
+					config
+				);
+			} catch (err) {}
+		} else {
+			history.push("/login");
+		}
+	};
+
 	return (
 		<Container>
 			<Circle />
 			<Image src={item.image} />
 			<Info>
 				<Icon onClick={handleClick}>
-					<ShoppingCartOutlined style={{ padding: "8px" }} />
+					<ShoppingCartOutlined style={{ color: "teal", padding: "8px" }} />
 				</Icon>
 				<Icon>
 					<Link to={`/product/${item.id}`}>
-						<SearchOutlined style={{ padding: "8px" }} />
+						<SearchOutlined style={{ color: "teal", padding: "8px" }} />
 					</Link>
+				</Icon>
+				<Icon onClick={handleRating}>
+					{success ? (
+						<Favorite style={{ color: "teal", padding: "8px" }} />
+					) : (
+						<FavoriteBorderOutlined style={{ color: "teal", padding: "8px" }} />
+					)}
 				</Icon>
 			</Info>
 		</Container>
