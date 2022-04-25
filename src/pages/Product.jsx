@@ -11,6 +11,7 @@ import { publicRequest } from "../requestMethods";
 import { addProduct } from "../redux/cartRedux";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import StarRating from "../components/StarRating";
 
 const Container = styled.div``;
 
@@ -98,6 +99,18 @@ const AmountContainer = styled.div`
 	display: flex;
 	align-items: center;
 	font-weight: 1000;
+`;
+
+const StarContainer = styled.div`
+	input[type="radio"] {
+		display: none;
+	}
+	display: flex;
+	align-items: center;
+	font-weight: 100;
+	margin: 30px 0px;
+	cursor: pointer;
+	transition: color 200ms;
 `;
 
 const Amount = styled.span`
@@ -199,6 +212,9 @@ const Product = () => {
 						</AmountContainer>
 						<Button onClick={handleClick}>Add to cart</Button>
 					</AddContainer>
+					<StarContainer>
+						<StarRating />
+					</StarContainer>
 				</InfoContainer>
 			</Wrapper>
 			<NewsLetter />

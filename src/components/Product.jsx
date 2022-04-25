@@ -4,6 +4,10 @@ import {
 	FavoriteBorderOutlined,
 	SearchOutlined,
 	ShoppingCartOutlined,
+	ThumbDown,
+	ThumbDownOutlined,
+	ThumbUp,
+	ThumbUpOutlined,
 } from "@material-ui/icons";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
@@ -75,6 +79,23 @@ const Icon = styled.div`
     }
 `;
 
+const DislikeIcon = styled.div`
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    display; flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    transition: all 0.5s ease;
+
+    &:hover{
+        background-color: #e9f5f5;
+        transform: scale(1.1);
+    }
+`;
+
 const Product = ({ item }) => {
 	const dispatch = useDispatch();
 	const [product, setProduct] = useState({});
@@ -82,7 +103,8 @@ const Product = ({ item }) => {
 	const color = item.color;
 	const size = item.size[1];
 	const history = useHistory();
-	const [success, setSuccess] = useState(false);
+	const [like, setLike] = useState(false);
+	const [dislike, setDisLike] = useState(false);
 
 	useEffect(() => {
 		const getProduct = async () => {
@@ -105,12 +127,12 @@ const Product = ({ item }) => {
 		}
 	};
 
-	const handleRating = async () => {
+	const handleLike = async () => {
 		if (
 			localStorage.getItem("user") != undefined ||
 			localStorage.getItem("user") != null
 		) {
-			setSuccess(true);
+			setLike(true);
 			const config = {
 				headers: {
 					"Content-Type": "application/json",
@@ -121,7 +143,32 @@ const Product = ({ item }) => {
 				const user = JSON.parse(localStorage.getItem("user"));
 				await userRequest.post(
 					"/products/rating",
-					{ userId: user.id, productId: product.id },
+					{ userId: user.id, productId: product.id, rating: 1 },
+					config
+				);
+			} catch (err) {}
+		} else {
+			history.push("/login");
+		}
+	};
+
+	const handleDislike = async () => {
+		if (
+			localStorage.getItem("user") != undefined ||
+			localStorage.getItem("user") != null
+		) {
+			setDisLike(true);
+			const config = {
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: localStorage.getItem("ACCESS_TOKEN"),
+				},
+			};
+			try {
+				const user = JSON.parse(localStorage.getItem("user"));
+				await userRequest.post(
+					"/products/rating",
+					{ userId: user.id, productId: product.id, rating: -1 },
 					config
 				);
 			} catch (err) {}
@@ -135,6 +182,13 @@ const Product = ({ item }) => {
 			<Circle />
 			<Image src={item.image} />
 			<Info>
+				<DislikeIcon onClick={handleDislike}>
+					{dislike ? (
+						<ThumbDown style={{ color: "teal", padding: "8px" }} />
+					) : (
+						<ThumbDownOutlined style={{ color: "teal", padding: "8px" }} />
+					)}
+				</DislikeIcon>
 				<Icon onClick={handleClick}>
 					<ShoppingCartOutlined style={{ color: "teal", padding: "8px" }} />
 				</Icon>
@@ -143,11 +197,11 @@ const Product = ({ item }) => {
 						<SearchOutlined style={{ color: "teal", padding: "8px" }} />
 					</Link>
 				</Icon>
-				<Icon onClick={handleRating}>
-					{success ? (
-						<Favorite style={{ color: "teal", padding: "8px" }} />
+				<Icon onClick={handleLike}>
+					{like ? (
+						<ThumbUp style={{ color: "teal", padding: "8px" }} />
 					) : (
-						<FavoriteBorderOutlined style={{ color: "teal", padding: "8px" }} />
+						<ThumbUpOutlined style={{ color: "teal", padding: "8px" }} />
 					)}
 				</Icon>
 			</Info>
