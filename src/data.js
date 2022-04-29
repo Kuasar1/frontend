@@ -1,6 +1,14 @@
 export const sliderItems = [
 	{
 		id: 1,
+		img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6935a777-7c22-4375-8a94-10554e72d3ac/d70y0r5-596cc911-eb6c-497d-9301-4db15111e83c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzY5MzVhNzc3LTdjMjItNDM3NS04YTk0LTEwNTU0ZTcyZDNhY1wvZDcweTByNS01OTZjYzkxMS1lYjZjLTQ5N2QtOTMwMS00ZGIxNTExMWU4M2MucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.sE4gh9rnlUz4_GyFV1gq4SanRK1KwiBsS0EXLxRBO0c",
+		title: "TOP SALE",
+		desc: "Don't miss the top sale!",
+		bg: "fbf0f4",
+		cat: "kids",
+	},
+	{
+		id: 2,
 		img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/21348573-c6ed-461c-b9a3-722cd4624864/da7f6xv-1bfca261-c4b8-46ea-a75a-8a015353cd2c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzIxMzQ4NTczLWM2ZWQtNDYxYy1iOWEzLTcyMmNkNDYyNDg2NFwvZGE3ZjZ4di0xYmZjYTI2MS1jNGI4LTQ2ZWEtYTc1YS04YTAxNTM1M2NkMmMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.z_Ua8-k-t6dU_a62RUnAbSalkuxHT0_gCAl4439YsLQ",
 		title: "SUMMER SALE",
 		desc: "Don't miss the summer sale!",
@@ -8,20 +16,12 @@ export const sliderItems = [
 		cat: "women",
 	},
 	{
-		id: 2,
+		id: 3,
 		img: "https://www.freeiconspng.com/uploads/female-model-png-model-png4-by-icekitz-3.png",
 		title: "FALL SALE",
 		desc: "Don't miss the fall sale!",
 		bg: "fcf1ed",
 		cat: "men",
-	},
-	{
-		id: 3,
-		img: "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/6935a777-7c22-4375-8a94-10554e72d3ac/d70y0r5-596cc911-eb6c-497d-9301-4db15111e83c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzY5MzVhNzc3LTdjMjItNDM3NS04YTk0LTEwNTU0ZTcyZDNhY1wvZDcweTByNS01OTZjYzkxMS1lYjZjLTQ5N2QtOTMwMS00ZGIxNTExMWU4M2MucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.sE4gh9rnlUz4_GyFV1gq4SanRK1KwiBsS0EXLxRBO0c",
-		title: "TOP SALE",
-		desc: "Don't miss the top sale!",
-		bg: "fbf0f4",
-		cat: "kids",
 	},
 ];
 

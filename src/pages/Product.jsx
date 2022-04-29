@@ -9,7 +9,7 @@ import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
 import { publicRequest } from "../requestMethods";
 import { addProduct } from "../redux/cartRedux";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import StarRating from "../components/StarRating";
 
@@ -146,11 +146,27 @@ const Product = () => {
 	const [size, setSize] = useState("");
 	const dispatch = useDispatch();
 	const history = useHistory();
+	//const user = useSelector((state) => state.user.currentUser);
+	const [hasRated, setHasRated] = useState(false);
 
 	useEffect(() => {
 		const getProduct = async () => {
 			try {
-				const res = await publicRequest.get("/products/" + id);
+				const user = localStorage.getItem("user");
+				let res;
+				if (user != null) {
+					const config = {
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: localStorage.getItem("ACCESS_TOKEN"),
+						},
+						params: { userId: JSON.parse(user).id },
+					};
+					res = await publicRequest.get("/products/foruser/" + id, config);
+				} else {
+					res = await publicRequest.get("/products/" + id);
+				}
+				setHasRated(res.data.rating === 0 ? false : true);
 				setProduct(res.data);
 			} catch (err) {}
 		};
@@ -213,7 +229,11 @@ const Product = () => {
 						<Button onClick={handleClick}>Add to cart</Button>
 					</AddContainer>
 					<StarContainer>
-						<StarRating />
+						<StarRating
+							productId={id}
+							productRating={product.rating}
+							rated={hasRated}
+						/>
 					</StarContainer>
 				</InfoContainer>
 			</Wrapper>

@@ -132,7 +132,13 @@ const Product = ({ item }) => {
 			localStorage.getItem("user") != undefined ||
 			localStorage.getItem("user") != null
 		) {
-			setLike(true);
+			if (like) {
+				setLike(false);
+				setDisLike(false);
+			} else {
+				setDisLike(false);
+				setLike(true);
+			}
 			const config = {
 				headers: {
 					"Content-Type": "application/json",
@@ -141,11 +147,12 @@ const Product = ({ item }) => {
 			};
 			try {
 				const user = JSON.parse(localStorage.getItem("user"));
-				await userRequest.post(
-					"/products/rating",
-					{ userId: user.id, productId: product.id, rating: 1 },
+				const res = await userRequest.post(
+					"/products/like",
+					{ userId: user.id, productId: product.id, like: -1 },
 					config
 				);
+				console.log(res);
 			} catch (err) {}
 		} else {
 			history.push("/login");
@@ -157,7 +164,13 @@ const Product = ({ item }) => {
 			localStorage.getItem("user") != undefined ||
 			localStorage.getItem("user") != null
 		) {
-			setDisLike(true);
+			if (dislike) {
+				setDisLike(false);
+				setLike(false);
+			} else {
+				setLike(false);
+				setDisLike(true);
+			}
 			const config = {
 				headers: {
 					"Content-Type": "application/json",
@@ -166,11 +179,12 @@ const Product = ({ item }) => {
 			};
 			try {
 				const user = JSON.parse(localStorage.getItem("user"));
-				await userRequest.post(
-					"/products/rating",
-					{ userId: user.id, productId: product.id, rating: -1 },
+				const res = await userRequest.post(
+					"/products/like",
+					{ userId: user.id, productId: product.id, like: -1 },
 					config
 				);
+				console.log(res);
 			} catch (err) {}
 		} else {
 			history.push("/login");
@@ -182,7 +196,7 @@ const Product = ({ item }) => {
 			<Circle />
 			<Image src={item.image} />
 			<Info>
-				<DislikeIcon onClick={handleDislike}>
+				<DislikeIcon onClick={like ? handleDislike : handleDislike}>
 					{dislike ? (
 						<ThumbDown style={{ color: "teal", padding: "8px" }} />
 					) : (
@@ -197,7 +211,7 @@ const Product = ({ item }) => {
 						<SearchOutlined style={{ color: "teal", padding: "8px" }} />
 					</Link>
 				</Icon>
-				<Icon onClick={handleLike}>
+				<Icon onClick={like ? handleLike : handleLike}>
 					{like ? (
 						<ThumbUp style={{ color: "teal", padding: "8px" }} />
 					) : (

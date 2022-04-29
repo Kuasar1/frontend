@@ -1,7 +1,7 @@
+import { message } from "antd";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import styled from "styled-components";
 import { login, register } from "../redux/apiCalls";
 import { mobile } from "../responsive";
@@ -84,6 +84,10 @@ const Login = () => {
 	const handleRegister = () => {
 		history.push("/register");
 	};
+
+	const handleHome = () => {
+		history.push("/");
+	};
 	return (
 		<Container>
 			<Wrapper>
@@ -103,6 +107,7 @@ const Login = () => {
 					</Button>
 					{error && <Error>Something went wrong...</Error>}
 					<Link onClick={handleRegister}>CREATE A NEW ACCOUNT</Link>
+					<Link onClick={handleHome}>CONTINUE WITHOUT USER</Link>
 				</Form>
 			</Wrapper>
 		</Container>

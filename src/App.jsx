@@ -15,7 +15,7 @@ import {
 } from "react-router-dom";
 
 const App = () => {
-	const user = useSelector(() => localStorage.getItem("user"));
+	const user = useSelector((state) => state.user.currentUser);
 	return (
 		<Router>
 			<Switch>

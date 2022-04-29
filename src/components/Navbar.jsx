@@ -90,16 +90,15 @@ const Navbar = () => {
 	const handleLogout = () => {
 		localStorage.removeItem("ACCESS_TOKEN");
 		localStorage.removeItem("user");
+		localStorage.removeItem("persist:root");
 		history.push("/login");
 	};
 
 	const handleSearch = () => {
-		console.log("clicked");
 		if (name.trim().length === 0) {
 			return alert("String is empty");
 		} else {
 			getProduct(name);
-			//TODO
 		}
 	};
 
