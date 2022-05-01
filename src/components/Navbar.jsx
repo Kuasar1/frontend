@@ -94,14 +94,6 @@ const Navbar = () => {
 		history.push("/login");
 	};
 
-	const handleSearch = () => {
-		if (name.trim().length === 0) {
-			return alert("String is empty");
-		} else {
-			getProduct(name);
-		}
-	};
-
 	return (
 		<Container>
 			<Wrapper>
@@ -116,10 +108,9 @@ const Navbar = () => {
 							placeholder="Search"
 							onChange={(e) => setName(e.target.value)}
 						/>
-						<Search
-							onClick={handleSearch}
-							style={{ color: "gray", fontSize: 16 }}
-						/>
+						<Link to={`/products/${name}`}>
+							<Search style={{ color: "gray", fontSize: 16 }} />
+						</Link>
 					</SearchContainer>
 				</Left>
 				<Center>

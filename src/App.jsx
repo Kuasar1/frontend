@@ -25,6 +25,9 @@ const App = () => {
 				<Route path="/products/:category">
 					<ProductList />
 				</Route>
+				<Route path="/products/search/:name">
+					<ProductList />
+				</Route>
 				<Route path="/product/:id">
 					<Product />
 				</Route>

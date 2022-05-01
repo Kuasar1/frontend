@@ -42,7 +42,6 @@ export const getProduct = async (productName) => {
 	const config = {
 		headers: {
 			"Content-Type": "application/json",
-			Authorization: localStorage.getItem("ACCESS_TOKEN"),
 		},
 	};
 	try {
@@ -50,6 +49,5 @@ export const getProduct = async (productName) => {
 			"/products/getByName/" + productName,
 			config
 		);
-		console.log(res.data);
 	} catch (err) {}
 };
