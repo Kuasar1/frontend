@@ -10,32 +10,54 @@ const Container = styled.div`
 	justify-content: space-between;
 `;
 
-const Products = ({ cat, filters, sort }) => {
+const Products = ({ suggestion, filters, sort }) => {
 	const [products, setProducts] = useState([]);
 	const [filteredProducts, setFilteredProducts] = useState([]);
 
 	useEffect(() => {
 		const getProducts = async () => {
 			try {
-				const res = await userRequest.get(
-					cat ? `/products?category=${cat}` : "/products/"
-				);
+				const user = localStorage.getItem("user");
+				let res;
+				if (
+					user != null &&
+					(suggestion == "JustForYou" ||
+						suggestion == "MostPopular" ||
+						suggestion == "YouMayLike")
+				) {
+					const config = {
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: localStorage.getItem("ACCESS_TOKEN"),
+						},
+						params: { userId: JSON.parse(user).id },
+					};
+					res = await userRequest.get(
+						suggestion ? `/recommendations/${suggestion}` : "/products/",
+						config
+					);
+				} else {
+					res = await userRequest.get(
+						suggestion ? `/products?category=${suggestion}` : "/products/"
+					);
+				}
+
 				setProducts(res.data);
 			} catch (err) {}
 		};
 		getProducts();
-	}, [cat]);
+	}, [suggestion]);
 
 	useEffect(() => {
-		cat &&
+		suggestion &&
 			setFilteredProducts(
 				products.filter((item) =>
-					Object.entries(filters).every(([key, value]) =>
-						item[key].includes(value)
+					Object.entries(filters).every(([suggestion, value]) =>
+						item[suggestion].includes(value)
 					)
 				)
 			);
-	}, [products, cat, filters]);
+	}, [products, suggestion, filters]);
 
 	useEffect(() => {
 		if (sort === "newest") {
@@ -55,7 +77,7 @@ const Products = ({ cat, filters, sort }) => {
 
 	return (
 		<Container>
-			{cat
+			{suggestion
 				? filteredProducts.map((item) => <Product item={item} key={item.id} />)
 				: products
 						.slice(0, 8)

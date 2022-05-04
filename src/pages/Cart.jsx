@@ -202,6 +202,7 @@ const Cart = () => {
 					stripeData: res.data,
 					products: cart,
 				});
+				history.go(0);
 			} catch (err) {}
 		};
 		stripeToken && cart.total >= 1 && makeRequest();

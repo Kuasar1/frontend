@@ -9,8 +9,6 @@ const StarRating = (props) => {
 	const [hover, setHover] = useState(null);
 	const [isDisable, setIsDisable] = useState(props.rated ? true : false);
 	const history = useHistory();
-	//const user = useSelector((state) => state.user.currentUser);
-	console.log(props);
 
 	const handleClick = async (e) => {
 		if (
@@ -45,6 +43,7 @@ const StarRating = (props) => {
 			} catch {}
 		} else {
 			history.push("/login");
+			history.go(0);
 		}
 	};
 

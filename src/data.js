@@ -5,7 +5,7 @@ export const sliderItems = [
 		title: "TOP SALE",
 		desc: "Don't miss the top sale!",
 		bg: "fbf0f4",
-		cat: "kids",
+		cat: "men",
 	},
 	{
 		id: 2,
@@ -21,28 +21,28 @@ export const sliderItems = [
 		title: "FALL SALE",
 		desc: "Don't miss the fall sale!",
 		bg: "fcf1ed",
-		cat: "men",
+		cat: "sneakers",
 	},
 ];
 
-export const categories = [
+export const suggestions = [
 	{
 		id: 1,
 		img: "https://images.pexels.com/photos/5886041/pexels-photo-5886041.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-		title: "SHIRT STYLE!",
-		cat: "women",
+		title: "JUST FOR YOU",
+		key: "JustForYou",
 	},
 	{
 		id: 2,
 		img: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-		title: "LOUNGEWEAR LOVE",
-		cat: "men",
+		title: "SEE WHAT OTHERS LIKE",
+		key: "YouMayLike",
 	},
 	{
 		id: 3,
 		img: "https://images.pexels.com/photos/5480696/pexels-photo-5480696.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500",
-		title: "LIGHT JACKETS",
-		cat: "kids",
+		title: "THE MOST POPULAR",
+		key: "MostPopular",
 	},
 ];
 

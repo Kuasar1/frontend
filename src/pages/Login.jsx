@@ -83,10 +83,12 @@ const Login = () => {
 
 	const handleRegister = () => {
 		history.push("/register");
+		history.go(0);
 	};
 
 	const handleHome = () => {
 		history.push("/");
+		history.go(0);
 	};
 	return (
 		<Container>

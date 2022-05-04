@@ -144,6 +144,7 @@ const Order = () => {
 	const address = stripeData.billing_details.address;
 	const handleClick = () => {
 		history.push("/");
+		history.go(0);
 	};
 
 	useEffect(() => {

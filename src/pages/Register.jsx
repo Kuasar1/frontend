@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { mobile } from "../responsive";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../redux/apiCalls";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
 	width: 100vw;
@@ -54,6 +55,10 @@ const Button = styled.button`
 	background-color: teal;
 	color: white;
 	cursor: pointer;
+`;
+
+const LoginLink = styled.a`
+	padding: 20px 20px;
 `;
 
 const Error = styled.span`
@@ -119,6 +124,9 @@ const Register = () => {
 					<Button onClick={handleClick} disabled={isFetching}>
 						Create
 					</Button>
+					<LoginLink>
+						<Link to="/login">ALREADY HAVE ACCOUNT? SIGN IN</Link>
+					</LoginLink>
 					{error && <Error>Something went wrong...</Error>}
 				</Form>
 			</Wrapper>

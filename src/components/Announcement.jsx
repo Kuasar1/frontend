@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -8,13 +9,15 @@ const Container = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 14px;
+	font-size: 18px;
 	font-weight: 500px;
 `;
 
 const Announcement = () => {
 	return (
-		<Container>Super deal! Free shipping for your first 3 purchase!</Container>
+		<Container>
+			<Link to="/register">Join us to get product recommendations today!</Link>
+		</Container>
 	);
 };
 

@@ -189,6 +189,7 @@ const Product = () => {
 			dispatch(addProduct({ ...product, quantity, color, size }));
 		} else {
 			history.push("/login");
+			history.go(0);
 		}
 	};
 

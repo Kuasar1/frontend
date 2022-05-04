@@ -124,6 +124,7 @@ const Product = ({ item }) => {
 			dispatch(addProduct({ ...product, quantity, color, size }));
 		} else {
 			history.push("/login");
+			history.go(0);
 		}
 	};
 
@@ -156,6 +157,7 @@ const Product = ({ item }) => {
 			} catch (err) {}
 		} else {
 			history.push("/login");
+			history.go(0);
 		}
 	};
 
@@ -188,6 +190,7 @@ const Product = ({ item }) => {
 			} catch (err) {}
 		} else {
 			history.push("/login");
+			history.go(0);
 		}
 	};
 
@@ -196,13 +199,13 @@ const Product = ({ item }) => {
 			<Circle />
 			<Image src={item.image} />
 			<Info>
-				<DislikeIcon onClick={like ? handleDislike : handleDislike}>
+				{/* <DislikeIcon onClick={like ? handleDislike : handleDislike}>
 					{dislike ? (
 						<ThumbDown style={{ color: "teal", padding: "8px" }} />
 					) : (
 						<ThumbDownOutlined style={{ color: "teal", padding: "8px" }} />
 					)}
-				</DislikeIcon>
+				</DislikeIcon> */}
 				<Icon onClick={handleClick}>
 					<ShoppingCartOutlined style={{ color: "teal", padding: "8px" }} />
 				</Icon>

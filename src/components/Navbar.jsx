@@ -10,10 +10,10 @@ import { useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import { getProduct } from "../redux/apiCalls";
 
 const Container = styled.div`
 	height: 60px;
+	background-color: #f5fafd;
 	${mobile({ height: "50px" })}
 `;
 
@@ -79,7 +79,7 @@ const Right = styled.div`
 	align-items: center;
 	justify-content: flex-end;
 	gap: 15px;
-	${mobile({ flex: 2, justifyContent: "center" })}
+	${mobile({ justifyContent: "center" })}
 `;
 
 const Navbar = () => {
@@ -92,6 +92,7 @@ const Navbar = () => {
 		localStorage.removeItem("user");
 		localStorage.removeItem("persist:root");
 		history.push("/login");
+		history.go(0);
 	};
 
 	return (
@@ -114,7 +115,7 @@ const Navbar = () => {
 					</SearchContainer>
 				</Left>
 				<Center>
-					<Logo>EZbuy</Logo>
+					<Logo>AmarBuy</Logo>
 				</Center>
 				<Right>
 					<Link to="/cart">
