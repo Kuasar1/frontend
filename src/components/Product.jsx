@@ -149,8 +149,8 @@ const Product = ({ item }) => {
 			try {
 				const user = JSON.parse(localStorage.getItem("user"));
 				const res = await userRequest.post(
-					"/products/like",
-					{ userId: user.id, productId: product.id, like: -1 },
+					"/recommendations/like",
+					{ userId: user.id, productId: product.id, like: 1 },
 					config
 				);
 				console.log(res);
@@ -182,7 +182,7 @@ const Product = ({ item }) => {
 			try {
 				const user = JSON.parse(localStorage.getItem("user"));
 				const res = await userRequest.post(
-					"/products/like",
+					"/recommendations/like",
 					{ userId: user.id, productId: product.id, like: -1 },
 					config
 				);

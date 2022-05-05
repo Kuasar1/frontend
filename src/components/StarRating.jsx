@@ -32,7 +32,7 @@ const StarRating = (props) => {
 			try {
 				const user = localStorage.getItem("user");
 				const res = await userRequest.post(
-					"/products/rating",
+					"/recommendations/rating",
 					{
 						userId: JSON.parse(user).id,
 						productId: props.productId,

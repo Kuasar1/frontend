@@ -141,7 +141,6 @@ const Order = () => {
 	const user = useSelector((state) => state.user.currentUser);
 	const history = useHistory();
 	const dispatch = useDispatch();
-	const address = stripeData.billing_details.address;
 	const handleClick = () => {
 		history.push("/");
 		history.go(0);
@@ -154,7 +153,7 @@ const Order = () => {
 				Authorization: localStorage.getItem("ACCESS_TOKEN"),
 			},
 		};
-
+		console.log(cart);
 		const createOrder = async () => {
 			try {
 				const res = await userRequest.post(
@@ -163,7 +162,8 @@ const Order = () => {
 						userId: user.id,
 						products: cart.products,
 						amount: cart.total,
-						address: data.billing_details.address,
+						addresses: data.billing_details.address,
+						quantity: cart.quantity,
 					},
 					config
 				);
@@ -214,7 +214,9 @@ const Order = () => {
 						<SummaryItem>
 							<SummaryItemText>Shipping address:</SummaryItemText>
 							<SummaryItemValue>
-								{address.line1}, {address.city}, {address.country}
+								{data.billing_details.address.line1},{" "}
+								{data.billing_details.address.city},{" "}
+								{data.billing_details.address.country}
 							</SummaryItemValue>
 						</SummaryItem>
 						<SummaryItem>
