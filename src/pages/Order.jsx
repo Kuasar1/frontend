@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router";
 import { userRequest } from "../requestMethods";
@@ -11,7 +11,6 @@ import Navbar from "../components/Navbar";
 import Announcement from "../components/Announcement";
 import Footer from "../components/Footer";
 import Login from "./Login";
-import { stripeData } from "../data";
 
 const Container = styled.div``;
 
@@ -153,7 +152,6 @@ const Order = () => {
 				Authorization: localStorage.getItem("ACCESS_TOKEN"),
 			},
 		};
-		console.log(cart);
 		const createOrder = async () => {
 			try {
 				const res = await userRequest.post(

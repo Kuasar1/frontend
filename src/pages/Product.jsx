@@ -9,7 +9,7 @@ import { mobile } from "../responsive";
 import { useLocation } from "react-router-dom";
 import { publicRequest } from "../requestMethods";
 import { addProduct } from "../redux/cartRedux";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import StarRating from "../components/StarRating";
 
@@ -146,7 +146,6 @@ const Product = () => {
 	const [size, setSize] = useState("");
 	const dispatch = useDispatch();
 	const history = useHistory();
-	//const user = useSelector((state) => state.user.currentUser);
 	const [hasRated, setHasRated] = useState(false);
 
 	useEffect(() => {

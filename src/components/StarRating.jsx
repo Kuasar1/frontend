@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { FaStar } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
 import { userRequest } from "../requestMethods";
-import { useSelector } from "react-redux";
 
 const StarRating = (props) => {
 	const [rating, setRating] = useState(null);
@@ -31,7 +30,7 @@ const StarRating = (props) => {
 
 			try {
 				const user = localStorage.getItem("user");
-				const res = await userRequest.post(
+				await userRequest.post(
 					"/recommendations/rating",
 					{
 						userId: JSON.parse(user).id,
