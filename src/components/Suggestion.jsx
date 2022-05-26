@@ -6,7 +6,7 @@ import { mobile } from "../responsive";
 const Container = styled.div`
 	flex: 1;
 	margin: 3px;
-	height: 70vh;
+	height: 50vh;
 	position: relative;
 `;
 
@@ -22,7 +22,7 @@ const Info = styled.div`
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: 100%;
+	height: 160%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -30,19 +30,21 @@ const Info = styled.div`
 `;
 
 const Title = styled.h1`
-	color: white;
+	color: black;
+	font-size: 40px;
 	margin-bottom: 20px;
 `;
 
 const Button = styled.button`
 	padding: 10px;
 	border: none;
+	margin-bottom: 200px;
 	background-color: white;
-	font-size: 20px;
+	font-size: 24px;
 	color: black;
 	cursor: pointer;
 	opacity: 70%;
-	font-weight: 1500;
+	font-weight: 150;
 	transition: all 0.5s ease;
 	&:hover {
 		background-color: #e9f5f5;

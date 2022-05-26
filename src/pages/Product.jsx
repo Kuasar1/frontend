@@ -149,6 +149,7 @@ const Product = () => {
 	const [hasRated, setHasRated] = useState(false);
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
 		const getProduct = async () => {
 			try {
 				const user = localStorage.getItem("user");
@@ -187,8 +188,10 @@ const Product = () => {
 		) {
 			dispatch(addProduct({ ...product, quantity, color, size }));
 		} else {
-			history.push("/login");
-			history.go(0);
+			if (window.confirm("Please login to add product to cart!")) {
+				history.push("/login");
+				history.go(0);
+			}
 		}
 	};
 

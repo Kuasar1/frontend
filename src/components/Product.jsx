@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import {
 	SearchOutlined,
 	ShoppingCartOutlined,
@@ -100,8 +100,10 @@ const Product = ({ item }) => {
 		) {
 			dispatch(addProduct({ ...product, quantity, color, size }));
 		} else {
-			history.push("/login");
-			history.go(0);
+			if (window.confirm("Please login to add product to cart!")) {
+				history.push("/login");
+				history.go(0);
+			}
 		}
 	};
 
@@ -130,8 +132,10 @@ const Product = ({ item }) => {
 				);
 			} catch (err) {}
 		} else {
-			history.push("/login");
-			history.go(0);
+			if (window.confirm("Please login to like this product!")) {
+				history.push("/login");
+				history.go(0);
+			}
 		}
 	};
 

@@ -12,7 +12,7 @@ const Container = styled.div`
 			rgba(255, 255, 255, 0.5),
 			rgba(255, 255, 255, 0.5)
 		),
-		url("https://images.pexels.com/photos/6984661/pexels-photo-6984661.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+		url("https://wallpaperaccess.com/full/1284240.jpg");
 	background-size: cover;
 	display: flex;
 	align-items: center;
@@ -23,6 +23,7 @@ const Wrapper = styled.div`
 	padding: 20px;
 	width: 40%;
 	background-color: white;
+	opacity: 80%;
 	${mobile({ width: "75%" })}
 `;
 
@@ -66,9 +67,11 @@ const Error = styled.span`
 `;
 
 const Register = () => {
+	window.scrollTo(0, 0);
 	const [firstname, setFirstName] = useState("");
 	const [lastname, setLastName] = useState("");
 	const [username, setUsername] = useState("");
+	const [confirm, setConfirm] = useState("");
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const dispatch = useDispatch();
@@ -76,6 +79,23 @@ const Register = () => {
 
 	const handleClick = (e) => {
 		e.preventDefault();
+		if (firstname.trim() == "") {
+			alert("Firstname field cannot be empty!");
+		} else if (lastname.trim() == "") {
+			alert("Lastname field cannot be empty!");
+		} else if (username.trim() == "") {
+			alert("Username field cannot be empty!");
+		} else if (email.trim() == "") {
+			alert("Email field cannot be empty!");
+		} else if (password.trim() == "") {
+			alert("Password field cannot be empty!");
+		} else if (confirm.trim() == "") {
+			alert("Password confirmation field cannot be empty!");
+		} else if (password != confirm) {
+			alert("Password confirmation does not match!");
+			setPassword("");
+			setConfirm("");
+		}
 		register(dispatch, {
 			username,
 			firstname,

@@ -40,7 +40,7 @@ const TopButton = styled.button`
 	cursor: pointer;
 	border: ${(props) => props.type === "filled" && "none"};
 	background-color: ${(props) =>
-		props.type === "filled" ? "black" : "transparent"};
+		props.type === "filled" ? "teal" : "transparent"};
 	color: ${(props) => props.type === "filled" && "white"};
 `;
 
@@ -158,7 +158,7 @@ const SummaryItemPrice = styled.span``;
 const Button = styled.button`
 	width: 100%;
 	padding: 10px;
-	background-color: black;
+	background-color: teal;
 	color: white;
 	font-weight: 600;
 	cursor: pointer;
@@ -179,6 +179,7 @@ const Cart = () => {
 	};
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
 		const makeRequest = async () => {
 			const config = {
 				headers: {
@@ -197,7 +198,7 @@ const Cart = () => {
 					},
 					config
 				);
-
+				dispatch(clearProducts());
 				history.push("/order", {
 					stripeData: res.data,
 					products: cart,
@@ -213,7 +214,7 @@ const Cart = () => {
 			<Navbar />
 			<Announcement />
 			<Wrapper>
-				<Title>Your bag</Title>
+				<Title>Your cart</Title>
 				<Top>
 					<Link to="/">
 						<TopButton>CONTINUE SHOPPING</TopButton>
@@ -260,7 +261,7 @@ const Cart = () => {
 						<Hr />
 					</Info>
 					<Summary>
-						<SummaryTitle>ORDER SUMMARY</SummaryTitle>
+						<SummaryTitle>CART SUMMARY</SummaryTitle>
 						<SummaryItem>
 							<SummaryItemText>Subtotal</SummaryItemText>
 							<SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
@@ -278,7 +279,7 @@ const Cart = () => {
 							<SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
 						</SummaryItem>
 						<StripeCheckout
-							name="EZbuy"
+							name="AmarBuy"
 							image="https://icon-library.com/images/money-icon-png/money-icon-png-2.jpg"
 							billingAddress
 							shippingAddress

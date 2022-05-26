@@ -88,11 +88,13 @@ const Navbar = () => {
 	const [name, setName] = useState("");
 
 	const handleLogout = () => {
-		localStorage.removeItem("ACCESS_TOKEN");
-		localStorage.removeItem("user");
-		localStorage.removeItem("persist:root");
-		history.push("/login");
-		history.go(0);
+		if (window.confirm("Do you want to log out?")) {
+			localStorage.removeItem("ACCESS_TOKEN");
+			localStorage.removeItem("user");
+			localStorage.removeItem("persist:root");
+			history.push("/login");
+			history.go(0);
+		}
 	};
 
 	return (

@@ -40,6 +40,7 @@ const Select = styled.select`
 const Option = styled.option``;
 
 const ProductList = () => {
+	window.scrollTo(0, 0);
 	const location = useLocation();
 	const suggestion = location.pathname.split("/")[2];
 	const [filters, setFilters] = useState({});

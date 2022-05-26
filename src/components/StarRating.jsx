@@ -41,8 +41,10 @@ const StarRating = (props) => {
 				);
 			} catch {}
 		} else {
-			history.push("/login");
-			history.go(0);
+			if (window.confirm("Please login to rate product!")) {
+				history.push("/login");
+				history.go(0);
+			}
 		}
 	};
 

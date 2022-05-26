@@ -80,7 +80,7 @@ const Products = ({ suggestion, filters, sort }) => {
 			{suggestion
 				? filteredProducts.map((item) => <Product item={item} key={item.id} />)
 				: products
-						.slice(0, 8)
+						.slice(0, 30)
 						.map((item) => <Product item={item} key={item.id} />)}
 		</Container>
 	);

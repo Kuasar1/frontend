@@ -12,7 +12,7 @@ const Container = styled.div`
 			rgba(255, 255, 255, 0.5),
 			rgba(255, 255, 255, 0.5)
 		),
-		url("https://images.pexels.com/photos/6984650/pexels-photo-6984650.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+		url("https://wallpaperaccess.com/full/4968478.jpg");
 	background-size: cover;
 	display: flex;
 	align-items: center;
@@ -23,6 +23,7 @@ const Wrapper = styled.div`
 	padding: 20px;
 	width: 25%;
 	background-color: white;
+	opacity: 80%;
 	${mobile({ width: "75%" })}
 `;
 
@@ -69,6 +70,7 @@ const Error = styled.span`
 `;
 
 const Login = () => {
+	window.scrollTo(0, 0);
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const dispatch = useDispatch();

@@ -146,6 +146,7 @@ const Order = () => {
 	};
 
 	useEffect(() => {
+		window.scrollTo(0, 0);
 		const config = {
 			headers: {
 				"Content-Type": "application/json",

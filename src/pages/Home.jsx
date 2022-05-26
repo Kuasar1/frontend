@@ -8,6 +8,7 @@ import NewsLetter from "../components/NewsLetter";
 import Footer from "../components/Footer";
 
 const Home = () => {
+	window.scrollTo(0, 0);
 	return localStorage.getItem("user") != null ? (
 		<div>
 			<Announcement />
