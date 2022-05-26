@@ -89,10 +89,10 @@ const Footer = () => {
 	return (
 		<Container>
 			<Left>
-				<Logo>EZbuy</Logo>
+				<Logo>AmarBuy</Logo>
 				<Desc>
-					You can buy anything you want easily with EZbuy, join today and thank
-					tomorrow!
+					You can buy anything you want easily with AmarBuy, join today and
+					thank tomorrow!
 				</Desc>
 				<SocialContainer>
 					<SocialIcon color="3B5999">
